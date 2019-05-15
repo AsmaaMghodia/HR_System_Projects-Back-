@@ -24,7 +24,7 @@ projects.insertMany([{
 
 }, ])
 
-app.get('/HR-System', async(req, res) => {
+app.get('/getProjects', async(req, res) => {
     console.log("get");
     const result = await projects.find();
     res.send(result);
@@ -32,7 +32,7 @@ app.get('/HR-System', async(req, res) => {
 
 
 
-app.post('/HR-System', async(req, res) => {
+app.post('/createProject', async(req, res) => {
     console.log("post")
     const result = await projects.create(req.body);
     console.log("post");
@@ -40,7 +40,7 @@ app.post('/HR-System', async(req, res) => {
 })
 
 
-app.delete('/HR-System/:name', async(req, res) => {
+app.delete('/deleteProject/:name', async(req, res) => {
     try {
         const result = await projects.find({ name: req.params.name });
         if (result.length > 0) {
@@ -57,7 +57,7 @@ app.delete('/HR-System/:name', async(req, res) => {
     }
 })
 
-app.put('/HR-System/:name', async(req, res) => {
+app.put('/changeProjects/:name', async(req, res) => {
     try {
         console.log("put")
         const fresult = await projects.find({ name: req.params.name });
